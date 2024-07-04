@@ -1,0 +1,55 @@
+<mujoco>
+    <option timestep="0.0002" />
+    <actuator>
+        <motor gear="1000" joint="shoulder_1_hinge" name="motor_1" ctrlrange="-100 100" ctrllimited="true"/>
+        <motor gear="1000" joint="shoulder_2_hinge" name="motor_2" ctrlrange="-100 100" ctrllimited="true"/>
+        <motor gear="1000" joint="shoulder_3_hinge" name="motor_3" ctrlrange="-100 100" ctrllimited="true"/>
+        <motor gear="1000" joint="elbow_hinge"      name="motor_4" ctrlrange="-100 100" ctrllimited="true"/>
+    </actuator>
+    <asset>
+        <material name="blue" rgba="0 0 1 1" />
+        <material name="green" rgba="0 1 0 1" />
+        <material name="red" rgba="1 0 0 1" />
+        <material name="white" rgba="1 1 1 1" />
+    </asset>
+    <worldbody>
+        <body name="base" pos="0 0 0">
+            <geom type="box" size="1 1 1" material="white"/>
+            
+            <body name="shoulder_1_link" pos="0 1 1.5">
+                <joint name="shoulder_1_hinge" axis="0 1 0"/>
+                <geom type="cylinder" size=".5 .5" euler="90 0 0" material="blue"/>
+                
+                <body name="shoulder_2_link" pos="0 1 0">
+                    <joint name="shoulder_2_hinge" axis="0 0 1"/>
+                    <geom type="cylinder" size=".5 .5" material="green"/>
+                    
+                    <body name="shoulder_3_link" pos="1 0 0" euler="0 0 0">
+                        <joint name="shoulder_3_hinge" axis="1 0 0"/>
+                        <geom type="cylinder" size=".5 .5" euler="0 90 0" material="red" />
+
+                        <body name="upper_arm" pos="1.5 0 0">
+                            <geom type="box" size="1 .25 .25" material="white" />
+                            
+                            <body name="elbow" pos="1.5 0 0">
+                                <joint name="elbow_hinge" axis="0 1 0" />
+                                <geom type="cylinder" size=".5 .5" euler="90 0 0" material="blue"/>
+                            
+                                <body name="lower_arm" pos="1 0 0">
+                                    <geom type="box" size=".5 .25 .25" material="white" />
+                                    
+                                    <body name="end_effector" pos=".75 0 0">
+                                        <geom type="sphere" size=".5" material="red" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+
+    </worldbody>
+    <contact>
+    </contact>
+</mujoco>
