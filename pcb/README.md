@@ -1,2 +1,2 @@
-![3d model](pcb\imgs\3d.jpg)
-![schematic](pcb\imgs\schematic.jpg)
+![3d model](https://github.com/Iurii-Podkorytov/intro_to_prototyping/blob/main/pcb/imgs/3d.jpg)
+![schematic](https://github.com/Iurii-Podkorytov/intro_to_prototyping/blob/main/pcb/imgs/schematic.jpg)
