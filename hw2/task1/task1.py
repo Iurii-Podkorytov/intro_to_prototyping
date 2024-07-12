@@ -1,12 +1,12 @@
 import mujoco
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 import mujoco
 import mujoco.viewer
+import pandas as pd
 
 # Load the MuJoCo model
-model = mujoco.MjModel.from_xml_path('test.xml') 
+model = mujoco.MjModel.from_xml_path('hw2\\task1\\3_joint_manipulator.xml') 
 data = mujoco.MjData(model)
 
 # Define the range of motor angles (in radians)
@@ -39,18 +39,27 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
                 joint_angles.append([i, j, k])
                 torques.append(data.qfrc_inverse)
 
-                # mj_step can be replaced with code that also evaluates
-                # a policy and applies a control signal before stepping the physics.
                 mujoco.mj_step(model, data)
-
-                # Pick up changes to the physics state, apply perturbations, update options from GUI.
                 viewer.sync()
 
-# Convert the lists to NumPy arrays
+# Convert the lists to numpy arrays
 joint_angles = np.array(joint_angles)
 torques = np.array(torques)
 
-# Create a violin plot of the torques
+# Create a DataFrame
+df = pd.DataFrame({
+    'Joint 1 Angle': joint_angles[:, 0],
+    'Joint 2 Angle': joint_angles[:, 1],
+    'Joint 3 Angle': joint_angles[:, 2],
+    'Torque 1': torques[:, 0],
+    'Torque 2': torques[:, 1],
+    'Torque 3': torques[:, 2]
+})
+
+# Save the DataFrame to a CSV file
+df.to_csv('hw2\\task1\joint_angles_and_torques.csv', index=False)
+
+# Create a plot of the torques
 plt.figure(figsize=(10, 5))
 for i in range(3):
     plt.violinplot(torques[:, i], positions=[i], showmeans=True)

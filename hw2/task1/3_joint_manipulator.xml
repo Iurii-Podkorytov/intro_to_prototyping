@@ -1,0 +1,43 @@
+<mujoco model="3-joint-planar-manipulator">
+
+    <default>
+        <joint axis="0 1 0"/>
+        <geom type="capsule" size=".01" rgba=".9 .7 .1 1"/>
+        <default class="visual_cylinder">
+            <geom type="cylinder" fromto="0 .015 0 0 -.015 0" size=".02" rgba=".3 .9 .3 .4"/>
+        </default>
+    </default>
+
+    <worldbody>
+        <light pos="0 0 1"/>
+        <body name="link_1" pos="0 0 0">
+            <joint/>
+            <geom name="g1" class="visual_cylinder"/>
+            <geom fromto="0 0 0 .1 0 0"/>
+            <body name="link_2" pos=".1 0 0">
+                <joint/>
+                <geom name="g2" class="visual_cylinder"/>
+                <geom fromto="0 0 0 .1 0 0"/>
+                <body name="link_3" pos=".1 0 0">
+                    <joint/>
+                    <geom name="g3" class="visual_cylinder"/>
+                    <geom fromto="0 0 0 .1 0 0"/>
+
+                    <body name="end_effector" pos=".1 0 0">
+                        <geom type="sphere" size=".025" mass="0.05"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <contact>
+        <exclude body1="link_1" body2="link_2"/>
+        <exclude body1="link_1" body2="link_3"/>
+        <exclude body1="link_1" body2="end_effector"/>
+        <exclude body1="link_2" body2="link_3"/>
+        <exclude body1="link_2" body2="end_effector"/>
+        <exclude body1="link_3" body2="end_effector"/>
+    </contact>
+
+</mujoco>
