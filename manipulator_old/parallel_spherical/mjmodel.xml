@@ -52,4 +52,8 @@
       </body>
     </body>
   </worldbody>
+  <equality>
+    <connect name="kinematic_link1" active="true" body1="lower_link11" body2="lower_link21" anchor="0 0 0" />
+    <connect name="kinematic_link2" active="true" body1="lower_link21" body2="lower_link31" anchor="0 0 0" />
+  </equality>
 </mujoco>

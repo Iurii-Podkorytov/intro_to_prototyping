@@ -1,0 +1,60 @@
+<mujoco model="parallel_spherical">
+  <compiler angle="radian" meshdir="meshes/"/>
+  <asset>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="lower_link21" file="lower_link21.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="lower_link11" file="lower_link11.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="upper_link11" file="upper_link11.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="upper_link21" file="upper_link21.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="upper_link31" file="upper_link31.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="ring1" file="ring1.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+  <worldbody>
+    <body name="base_link">
+      <inertial pos="-0.0420837 -0.0728912 -0.0885143" quat="0.913602 0.313599 -0.0840287 -0.244799" mass="0.414723" diaginertia="0.00169316 0.00158647 0.000122206"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="base_link"/>
+      <geom type="mesh" mesh="base_link"/>
+      <body name="lower_link21" pos="0 0 -0.1375">
+        <inertial pos="-0.0407758 0.0706257 0.0576326" quat="0.90369 -0.341111 -0.0914004 0.242143" mass="0.38823" diaginertia="0.00140486 0.00132334 9.60388e-05"/>
+        <joint name="Revolute_60" pos="0 0 0" axis="0 0 -1"/>
+        <geom pos="0 0 0.1375" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="lower_link21"/>
+        <geom pos="0 0 0.1375" type="mesh" mesh="lower_link21"/>
+        <body name="lower_link11" pos="0 0 0.015">
+          <inertial pos="0.0785525 0 0.0514474" quat="0.653281 0.270598 0.270598 0.653281" mass="0.361736" diaginertia="0.00115297 0.00109362 7.28718e-05"/>
+          <joint name="Revolute_61" pos="0 0 0" axis="0 0 -1"/>
+          <geom pos="0 0 0.1225" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="lower_link11"/>
+          <geom pos="0 0 0.1225" type="mesh" mesh="lower_link11"/>
+          <body name="upper_link11" pos="0.115 0 0.13">
+            <inertial pos="-0.0460042 0.0689958 -1.21572e-07" quat="0.270598 0.653281 -0.270598 0.653281" mass="0.320119" diaginertia="0.00079907 0.00075673 5.4308e-05"/>
+            <joint name="Revolute_62" pos="0 0 0" axis="1 0 0"/>
+            <geom pos="-0.115 0 -0.0075" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="upper_link11"/>
+            <geom pos="-0.115 0 -0.0075" type="mesh" mesh="upper_link11"/>
+            <body name="ring1" pos="-0.115 0.1 0">
+              <inertial pos="0 -0.1 -1.21572e-07" quat="0.5 0.5 -0.5 0.5" mass="0.957533" diaginertia="0.006678 0.00335715 0.00335715"/>
+              <joint name="Revolute_68" pos="0 0 0" axis="0 1 0"/>
+              <geom pos="0 -0.1 -0.0075" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="ring1"/>
+              <geom pos="0 -0.1 -0.0075" type="mesh" mesh="ring1"/>
+            </body>
+          </body>
+        </body>
+        <body name="upper_link21" pos="-0.0575 0.099593 0.145">
+          <inertial pos="-0.03675 -0.0743388 0" quat="0.560986 0.430459 -0.560986 0.430459" mass="0.320119" diaginertia="0.00079907 0.00075673 5.4308e-05"/>
+          <joint name="Revolute_63" pos="0 0 0" axis="-0.5 0.866025 0"/>
+          <geom pos="0.0575 -0.099593 -0.0075" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="upper_link21"/>
+          <geom pos="0.0575 -0.099593 -0.0075" type="mesh" mesh="upper_link21"/>
+        </body>
+      </body>
+      <body name="upper_link31" pos="-0.0575 -0.099593 0.0075">
+        <inertial pos="0.0827542 0.00534305 0" quat="-0.0922958 0.701057 0.0922958 0.701057" mass="0.320119" diaginertia="0.00079907 0.00075673 5.4308e-05"/>
+        <joint name="Revolute_64" pos="0 0 0" axis="-0.5 -0.866025 0"/>
+        <geom pos="0.0575 0.099593 -0.0075" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="upper_link31"/>
+        <geom pos="0.0575 0.099593 -0.0075" type="mesh" mesh="upper_link31"/>
+      </body>
+    </body>
+  </worldbody>
+  <equality>
+    <!-- <connect name="kinematic_link1" active="true" body1="upper_link11" body2="ring1" anchor="0 0 0" /> -->
+    <connect name="kinematic_link2" active="true" body1="upper_link21" body2="ring1" anchor="0 0 0" />
+    <connect name="kinematic_link3" active="true" body1="upper_link31" body2="ring1" anchor="0 0 0" />
+  </equality>
+</mujoco>
