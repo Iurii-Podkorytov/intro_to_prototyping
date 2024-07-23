@@ -1,0 +1,69 @@
+<mujoco model="itp2">
+  <compiler angle="radian" meshdir="meshes/"/>
+  <asset>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="l_link_down1" file="l_link_down1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="l_link_down2" file="l_link_down2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="l_link_down3" file="l_link_down3.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="l_link_down4" file="l_link_down4.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="v_link1" file="v_link1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="v_link2" file="v_link2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="v_link3" file="v_link3.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="v_link4" file="v_link4.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+  <worldbody>
+    <body name="base_link">
+      <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.312691" diaginertia="0.00110446 0.000562756 0.000562756"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="base_link"/>
+      <geom type="mesh" mesh="base_link"/>
+      <body name="l_link_down1" pos="0.060355 0 0">
+        <inertial pos="-0.0207331 -0.0280169 0.0280169" quat="-1.41001e-07 0.707107 0.5 0.5" mass="0.0964305" diaginertia="0.000102991 9.92561e-05 1.02616e-05"/>
+        <joint name="Revolute_6" pos="0 0 0" axis="-1 0 0"/>
+        <geom pos="-0.060355 0 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="l_link_down1"/>
+        <geom pos="-0.060355 0 0" type="mesh" mesh="l_link_down1"/>
+        <body name="v_link4" pos="-0.060355 0 0.065755">
+          <inertial pos="0 -0.0491587 -0.010755" quat="0.707107 0 0 0.707107" mass="0.02882" diaginertia="2.8657e-06 2.33879e-06 1.49746e-06"/>
+          <joint name="Revolute_16" pos="0 0 0" axis="0 0.707107 -0.707107"/>
+          <geom pos="0 0 -0.065755" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="v_link4"/>
+          <geom pos="0 0 -0.065755" type="mesh" mesh="v_link4"/>
+        </body>
+      </body>
+      <body name="l_link_down2" pos="0 0.060355 0">
+        <inertial pos="0.0280169 -0.0207331 0.0280169" quat="0.853553 0.353553 0.353553 -0.146447" mass="0.0964305" diaginertia="0.000102991 9.92561e-05 1.02616e-05"/>
+        <joint name="Revolute_7" pos="0 0 0" axis="0 -1 0"/>
+        <geom pos="0 -0.060355 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="l_link_down2"/>
+        <geom pos="0 -0.060355 0" type="mesh" mesh="l_link_down2"/>
+        <body name="v_link1" pos="0 -0.060355 0.065755">
+          <inertial pos="0.0491587 0 -0.010755" mass="0.02882" diaginertia="2.8657e-06 2.33879e-06 1.49746e-06"/>
+          <joint name="Revolute_10" pos="0 0 0" axis="-0.707107 0 -0.707107"/>
+          <geom pos="0 0 -0.065755" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="v_link1"/>
+          <geom pos="0 0 -0.065755" type="mesh" mesh="v_link1"/>
+        </body>
+      </body>
+      <body name="l_link_down3" pos="-0.060355 0 0">
+        <inertial pos="0.0207331 0.0280169 0.0280169" quat="-0.5 0.5 1.41001e-07 0.707107" mass="0.0964305" diaginertia="0.000102991 9.92561e-05 1.02616e-05"/>
+        <joint name="Revolute_8" pos="0 0 0" axis="1 0 0"/>
+        <geom pos="0.060355 0 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="l_link_down3"/>
+        <geom pos="0.060355 0 0" type="mesh" mesh="l_link_down3"/>
+        <body name="v_link2" pos="0.060355 0 0.065755">
+          <inertial pos="0 0.0491587 -0.010755" quat="0.707107 0 0 0.707107" mass="0.02882" diaginertia="2.8657e-06 2.33879e-06 1.49746e-06"/>
+          <joint name="Revolute_12" pos="0 0 0" axis="0 -0.707107 -0.707107"/>
+          <geom pos="0 0 -0.065755" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="v_link2"/>
+          <geom pos="0 0 -0.065755" type="mesh" mesh="v_link2"/>
+        </body>
+      </body>
+      <body name="l_link_down4" pos="0 -0.060355 0">
+        <inertial pos="-0.0280169 0.0207331 0.0280169" quat="0.353553 0.853553 -0.146447 0.353553" mass="0.0964305" diaginertia="0.000102991 9.92561e-05 1.02616e-05"/>
+        <joint name="Revolute_9" pos="0 0 0" axis="0 1 0"/>
+        <geom pos="0 0.060355 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="l_link_down4"/>
+        <geom pos="0 0.060355 0" type="mesh" mesh="l_link_down4"/>
+        <body name="v_link3" pos="0 0.060355 0.065755">
+          <inertial pos="-0.0491587 0 -0.010755" mass="0.02882" diaginertia="2.8657e-06 2.33879e-06 1.49746e-06"/>
+          <joint name="Revolute_14" pos="0 0 0" axis="0.707107 0 -0.707107"/>
+          <geom pos="0 0 -0.065755" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="v_link3"/>
+          <geom pos="0 0 -0.065755" type="mesh" mesh="v_link3"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
