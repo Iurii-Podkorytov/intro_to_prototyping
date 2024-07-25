@@ -1,10 +1,10 @@
 <mujoco>
     <option timestep="0.0002" />
     <actuator>
-        <motor gear="1000" joint="shoulder_1_hinge" name="motor_1" ctrlrange="-100 100" ctrllimited="true"/>
-        <motor gear="1000" joint="shoulder_2_hinge" name="motor_2" ctrlrange="-100 100" ctrllimited="true"/>
-        <motor gear="1000" joint="shoulder_3_hinge" name="motor_3" ctrlrange="-100 100" ctrllimited="true"/>
-        <motor gear="1000" joint="elbow_hinge"      name="motor_4" ctrlrange="-100 100" ctrllimited="true"/>
+        <motor gear="1" joint="shoulder_1_hinge" name="motor_1" ctrlrange="-1 1" ctrllimited="true"/>
+        <motor gear="1" joint="shoulder_2_hinge" name="motor_2" ctrlrange="-1 1" ctrllimited="true"/>
+        <motor gear="1" joint="shoulder_3_hinge" name="motor_3" ctrlrange="-1 1" ctrllimited="true"/>
+        <motor gear="1" joint="elbow_hinge"      name="motor_4" ctrlrange="-1 1" ctrllimited="true"/>
     </actuator>
     <asset>
         <material name="blue" rgba="0 0 1 1" />
@@ -14,32 +14,36 @@
     </asset>
     <worldbody>
         <body name="base" pos="0 0 0">
-            <geom type="box" size="1 1 1" material="white"/>
+            <geom type="box" size=".2 .2 .2" material="white"/>
             
-            <body name="shoulder_1_link" pos="0 1 1.5">
+            <body name="shoulder_1_link" pos="0 .2 .3">
                 <joint name="shoulder_1_hinge" axis="0 1 0"/>
-                <geom type="cylinder" size=".5 .5" euler="90 0 0" material="blue"/>
+                <geom type="cylinder" size=".1 .1" euler="90 0 0" material="blue"/>
+                <inertial pos="0 0 0" mass="0.02" diaginertia="0.01 0.01 0.01"/>
                 
-                <body name="shoulder_2_link" pos="0 1 0">
+                <body name="shoulder_2_link" pos="0 .2 0">
                     <joint name="shoulder_2_hinge" axis="0 0 1"/>
-                    <geom type="cylinder" size=".5 .5" material="green"/>
+                    <geom type="cylinder" size=".1 .1" material="green"/>
+                    <inertial pos="0 0 0" mass="0.02" diaginertia="0.01 0.01 0.01"/>
                     
-                    <body name="shoulder_3_link" pos="1 0 0" euler="0 0 0">
+                    <body name="shoulder_3_link" pos=".2 0 0" euler="0 0 0">
                         <joint name="shoulder_3_hinge" axis="1 0 0"/>
-                        <geom type="cylinder" size=".5 .5" euler="0 90 0" material="red" />
+                        <geom type="cylinder" size=".1 .1" euler="0 90 0" material="red" />
+                        <inertial pos="0 0 0" mass="0.02" diaginertia="0.01 0.01 0.01"/>
 
-                        <body name="upper_arm" pos="1.5 0 0">
-                            <geom type="box" size="1 .25 .25" material="white" />
+                        <body name="upper_arm" pos=".3 0 0">
+                            <geom type="box" size="0.2 .05 .05" material="white" />
                             
-                            <body name="elbow" pos="1.5 0 0">
+                            <body name="elbow" pos=".3 0 0">
                                 <joint name="elbow_hinge" axis="0 1 0" />
-                                <geom type="cylinder" size=".5 .5" euler="90 0 0" material="blue"/>
+                                <geom type="cylinder" size=".1 .1" euler="90 0 0" material="blue"/>
                             
-                                <body name="lower_arm" pos="1 0 0">
-                                    <geom type="box" size=".5 .25 .25" material="white" />
+                                <body name="lower_arm" pos=".2 0 0">
+                                    <geom type="box" size=".1 .05 .05" material="white" />
+                                    <inertial pos="0 0 0" mass="0.02" diaginertia="0.01 0.01 0.01"/>
                                     
-                                    <body name="end_effector" pos=".75 0 0">
-                                        <geom type="sphere" size=".5" material="red" />
+                                    <body name="end_effector" pos=".15 0 0">
+                                        <geom type="sphere" size=".1" material="red" />
                                     </body>
                                 </body>
                             </body>
