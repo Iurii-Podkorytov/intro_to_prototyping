@@ -37,7 +37,7 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
 
                 # Save the joint angles and torques
                 joint_angles.append([i, j, k])
-                torques.append(data.qfrc_inverse)
+                torques.append(np.array([i, j, k])+data.qfrc_inverse)
 
                 mujoco.mj_step(model, data)
                 viewer.sync()

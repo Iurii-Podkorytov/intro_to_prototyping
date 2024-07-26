@@ -7,7 +7,7 @@ p.setGravity(0,0,-10)
 planeId = p.loadURDF("plane.urdf")
 cubeStartPos = [0,0,0]
 cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
-robotId = p.loadURDF("itp2.urdf",cubeStartPos, cubeStartOrientation, 
+robotId = p.loadURDF("final_project_simplified.urdf",cubeStartPos, cubeStartOrientation, 
                    # useMaximalCoordinates=1, ## New feature in Pybullet
                    flags=p.URDF_USE_INERTIA_FROM_FILE)
 for i in range (10000):
